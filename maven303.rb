@@ -5,6 +5,8 @@ class Maven303 <Formula
   homepage 'http://maven.apache.org/'
   sha256 'b845479bd5d6d821210d3530c65da628a118abedd176492741e1d9bc5e400e2a'
 
+  depends_on :java
+
   def install
     # Remove windows files
     rm_f Dir["bin/*.bat"]
