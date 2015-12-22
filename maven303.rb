@@ -16,6 +16,12 @@ class Maven303 <Formula
     
     prefix.install %w{ NOTICE.txt LICENSE.txt README.txt }
     libexec.install Dir['*']
+    
+        # Symlink binaries
+    bin.mkpath
+    ln_s "#{libexec}/bin/mvn", bin+"mvn"
+    ln_s "#{libexec}/bin/mvnDebug", bin+"mvnDebug"
+    ln_s "#{libexec}/bin/mvnyjp", bin+"mvnyjp"
 
     # Leave conf file in libexec. The mvn symlink will be resolved and the conf
     # file will be found relative to it
