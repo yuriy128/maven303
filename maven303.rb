@@ -13,6 +13,8 @@ class Maven303 <Formula
 
     # Fix the permissions on the global settings file.
     chmod 0644, Dir["conf/settings.xml"]
+    
+    libexec.install Dir["*"]
 
     # Leave conf file in libexec. The mvn symlink will be resolved and the conf
     # file will be found relative to it
