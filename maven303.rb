@@ -13,23 +13,15 @@ class Maven303 <Formula
 
     # Fix the permissions on the global settings file.
     chmod 0644, Dir["conf/settings.xml"]
-    
+
+    # Install jars in libexec to avoid conflicts
     prefix.install %w{ NOTICE.txt LICENSE.txt README.txt }
     libexec.install Dir['*']
-    
-        # Symlink binaries
+
+    # Symlink binaries
     bin.mkpath
     ln_s "#{libexec}/bin/mvn", bin+"mvn"
     ln_s "#{libexec}/bin/mvnDebug", bin+"mvnDebug"
     ln_s "#{libexec}/bin/mvnyjp", bin+"mvnyjp"
-
-    # Leave conf file in libexec. The mvn symlink will be resolved and the conf
-    # file will be found relative to it
-    Pathname.glob("#{libexec}/bin/*") do |file|
-      next if file.directory?
-      basename = file.basename
-      next if basename.to_s == "m2.conf"
-      (bin/basename).write_env_script file, Language::Java.overridable_java_home_env
-    end
   end
 end
