@@ -17,6 +17,8 @@ class Maven303 <Formula
     # Install jars in libexec to avoid conflicts
     prefix.install %w{ NOTICE.txt LICENSE.txt README.txt }
     libexec.install Dir['*']
+  
+    (bin/basename).write_env_script file, Language::Java.overridable_java_home_env
 
     # Symlink binaries
     bin.mkpath
