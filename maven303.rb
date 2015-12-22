@@ -3,7 +3,7 @@ require 'formula'
 class Maven303 <Formula
   url 'http://archive.apache.org/dist/maven/binaries/apache-maven-3.0.3-bin.tar.gz'
   homepage 'http://maven.apache.org/'
-  md5 '507828d328eb3735103c0492443ef0f0'
+  sha1 'cfd1f5ef8ebb2f09a9446159842cf7cfa1a3ccd6'
 
   def install
     # Remove windows files
